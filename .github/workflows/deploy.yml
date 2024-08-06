@@ -18,14 +18,11 @@ jobs:
         with:
           node-version: '22.5.1'
 
-      - name: Install Yarn
-        run: npm install -g yarn
-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build the project
-        run: yarn build
+        run: npm run build
 
       - name: Install Flyctl
         run: |

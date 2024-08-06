@@ -19,21 +19,18 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
-# Install Yarn
-RUN npm install -g yarn
-
 # Install node modules
-COPY --link package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+COPY --link package-lock.json package.json ./
+RUN npm ci --include=dev
 
 # Copy application code
 COPY --link . .
 
 # Build application
-RUN yarn build
+RUN npm run build
 
 # Remove development dependencies
-RUN yarn install --production --frozen-lockfile && yarn cache clean
+RUN npm prune --omit=dev
 
 # Final stage for app image
 FROM nginx
