@@ -10,13 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@eslint/config-array": "^0.17.1",
-    "@eslint/object-schema": "^2.1.4",
-    "glob": "^11.0.0",
-    "inflight": "^1.0.6",
+    "lru-cache": "^9.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "glob": "^11.0.0"
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.5.8",
